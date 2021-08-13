@@ -160,6 +160,14 @@ router.get('/logout', function (req, res){
 //Check if user is authenticated
 
 const checkUserStatus = (req,res,next) => {
+  const cors = {
+    origin: "https://vigilant-joliot-b731fa.netlify.app"
+  };
+  res.header("Access-Control-Allow-Origin", cors.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.type('application/json');
   if(req.isAuthenticated()){
     next();
   }else{
