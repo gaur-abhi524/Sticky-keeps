@@ -40,12 +40,8 @@ app.use("/api/notes",notesRoute);
     
 app.use(function(req, res, next) {
 
-    const allowedDomains = ['http://localhost:3000','https://vigilant-joliot-b731fa.netlify.app/' ];
-    const origin = req.headers.origin;
-    if(allowedDomains.indexOf(origin) > -1){
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
+    res.setHeader("Access-Control-Allow-Origin", "https://vigilant-joliot-b731fa.netlify.app");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
     res.setHeader("Access-Control-Allow-Credentials", true);
     next();
