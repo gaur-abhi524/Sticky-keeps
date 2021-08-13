@@ -32,8 +32,8 @@ let generateUniqueAccountName = async (proposedName) => {
     return proposedName;
 };
 
-const successLoginUrl = "https://vigilant-joliot-b731fa.netlify.app//login/success";
-const failureLoginUrl = "https://vigilant-joliot-b731fa.netlify.app//login/failure";
+const successLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/success";
+const failureLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/failure";
 
 //   Google Login strategy
 
@@ -92,11 +92,12 @@ router.get(
 //REGISTER
 router.post("/register", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+    origin: "https://vigilant-joliot-b731fa.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
   res.type('application/json');
   Users = new User({ email: req.body.email, username: req.body.username });
   // console.log(req.body); 
@@ -116,11 +117,12 @@ router.post("/register", async (req, res) => {
 
 router.post('/login', function(req, res, next) {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+    origin: "https://vigilant-joliot-b731fa.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
   res.type('application/json');
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err) }
@@ -139,11 +141,12 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function (req, res){
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+    origin: "https://vigilant-joliot-b731fa.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
   res.type('application/json');
   req.logOut();
   res.clearCookie('connect.sid');
@@ -166,11 +169,12 @@ const checkUserStatus = (req,res,next) => {
 
 router.get("/user",checkUserStatus,(req,res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+    origin: "https://vigilant-joliot-b731fa.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
   res.type('application/json');
   res.json(req.user)
 });
