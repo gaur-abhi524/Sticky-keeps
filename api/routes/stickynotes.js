@@ -5,6 +5,13 @@ const User = require("../models/User");
 //create a note
 
 router.post("/", async (req, res) => {
+  const cors = {
+    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+  };
+  res.header("Access-Control-Allow-Origin", cors.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.type('application/json');
   const newPost = new Note(req.body);
   try {
     const savedPost = await newPost.save();
@@ -17,6 +24,13 @@ router.post("/", async (req, res) => {
 //delete a note
 
 router.delete("/:id", async (req, res) => {
+  const cors = {
+    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+  };
+  res.header("Access-Control-Allow-Origin", cors.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.type('application/json');
   try {
     const note = await Note.findById(req.params.id);
     if (note) {
@@ -31,6 +45,13 @@ router.delete("/:id", async (req, res) => {
 //get a note
 
 router.get("/find/:Title", async (req, res) => {
+  const cors = {
+    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+  };
+  res.header("Access-Control-Allow-Origin", cors.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.type('application/json');
   try {
     const note = await Note.find({title:req.params.Title});
     res.status(200).json(note);
@@ -42,6 +63,13 @@ router.get("/find/:Title", async (req, res) => {
 //get all notes
 
 router.get("/:userId", async (req, res) => {
+  const cors = {
+    origin: "https://vigilant-joliot-b731fa.netlify.app/"
+  };
+  res.header("Access-Control-Allow-Origin", cors.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.type('application/json');
   try {
     const currentUser = await User.findById(req.params.userId);
     const userNotes = await Note.find({ userId: currentUser._id });

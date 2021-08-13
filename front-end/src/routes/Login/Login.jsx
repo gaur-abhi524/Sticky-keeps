@@ -12,6 +12,8 @@ function Login() {
   const { dispatch } = useContext(AuthContext);
   const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
 
+  // const SERVER_URL = "http://localhost:8080/api";
+
   const fetchAuthUser = async () => {
     const response = await axios
       .get(SERVER_URL + "/auth/user", { withCredentials: true })

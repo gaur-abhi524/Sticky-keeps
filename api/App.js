@@ -8,7 +8,7 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const notesRoute = require("./routes/stickynotes");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+// const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -38,15 +38,20 @@ app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/notes",notesRoute);
     
-// app.use(function(req, res, next) {
-//     res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-//     res.setHeader("Access-Control-Allow-Credentials", true);
-//     next();
-//     });
+app.use(function(req, res, next) {
 
-app.use(cors());
+    const allowedDomains = ['http://localhost:3000','https://vigilant-joliot-b731fa.netlify.app/' ];
+    const origin = req.headers.origin;
+    if(allowedDomains.indexOf(origin) > -1){
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    next();
+    });
+
+// app.use(cors());
 
 app.listen(process.env.PORT || 8080, () => {
     console.log('server running at ' + PORT)

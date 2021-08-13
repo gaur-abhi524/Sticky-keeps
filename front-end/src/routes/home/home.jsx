@@ -11,6 +11,8 @@ function Home() {
 
   const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
 
+  // const SERVER_URL = "http://localhost:8080/api";
+
   const [notes, changenotes] = useState([]);
   const [showAll, setshowAll] = useState("");
   const { user } = useContext(AuthContext);
