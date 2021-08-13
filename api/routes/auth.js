@@ -32,8 +32,8 @@ let generateUniqueAccountName = async (proposedName) => {
     return proposedName;
 };
 
-const successLoginUrl = "http://localhost:3000/login/success";
-const failureLoginUrl = "http://localhost:3000/login/failure";
+const successLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/success";
+const failureLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/failure";
 
 //   Google Login strategy
 
