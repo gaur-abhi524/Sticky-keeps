@@ -8,17 +8,31 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const notesRoute = require("./routes/stickynotes");
 const bodyParser = require("body-parser");
+const cookie = require('cookie-parser')
+const MongoStore  = require('connect-mongo')(session);
 // const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true},()=>{
+    console.log("Connected to MongoDB");
+});
 app.set("trust proxy",1);
+
+app.use(cookie())
 
 app.use(session({
     secret:"5AxC2JucvLhyQf", 
     resave:false,
     saveUninitialized:false,
+    proxy: true,
+    cookie: {
+        secure: true,
+        maxAge: 3600000,
+        store: new MongoStore({ url: process.env.MONGO_URL })
+      }
+
 }));
 app.use(bodyParser.urlencoded({
     extended:true
@@ -26,10 +40,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true},()=>{
-    console.log("Connected to MongoDB");
-});
 
 app.use(express.static('public'));
 app.use(express.json());
