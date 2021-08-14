@@ -8,8 +8,8 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const notesRoute = require("./routes/stickynotes");
 const bodyParser = require("body-parser");
-const cookie = require('cookie-parser')
-const MongoStore  = require('connect-mongo')(session);
+const cookie = require('cookie-parser');
+const MongoStore  = require('connect-mongo');
 // const cors = require("cors");
 
 const app = express();
@@ -30,7 +30,7 @@ app.use(session({
     cookie: {
         secure: true,
         maxAge: 3600000,
-        store: new MongoStore({ url: process.env.MONGO_URL })
+        store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
       }
 
 }));
