@@ -8,8 +8,6 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const notesRoute = require("./routes/stickynotes");
 const bodyParser = require("body-parser");
-const cookie = require('cookie-parser');
-const MongoStore  = require('connect-mongo');
 // const cors = require("cors");
 
 const app = express();
@@ -20,19 +18,10 @@ mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true, useUnifiedTopology
 });
 app.set("trust proxy",1);
 
-app.use(cookie())
-
 app.use(session({
     secret:"5AxC2JucvLhyQf", 
     resave:false,
     saveUninitialized:false,
-    proxy: true,
-    cookie: {
-        secure: true,
-        maxAge: 3600000,
-        store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
-      }
-
 }));
 app.use(bodyParser.urlencoded({
     extended:true
