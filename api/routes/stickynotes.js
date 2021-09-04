@@ -6,7 +6,7 @@ const User = require("../models/User");
 
 router.post("/", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -48,7 +48,7 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/find/:Title", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -67,7 +67,7 @@ router.get("/find/:Title", async (req, res) => {
 
 router.get("/:userId", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

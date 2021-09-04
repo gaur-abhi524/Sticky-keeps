@@ -32,8 +32,8 @@ let generateUniqueAccountName = async (proposedName) => {
     return proposedName;
 };
 
-const successLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/success";
-const failureLoginUrl = "https://vigilant-joliot-b731fa.netlify.app/login/failure";
+const successLoginUrl = "https://sticky-keeps.netlify.app/login/success";
+const failureLoginUrl = "https://sticky-keeps.netlify.app/login/failure";
 
 //   Google Login strategy
 
@@ -92,7 +92,7 @@ router.get(
 //REGISTER
 router.post("/register", async (req, res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -117,7 +117,7 @@ router.post("/register", async (req, res) => {
 
 router.post('/login', function(req, res, next) {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -141,7 +141,7 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function (req, res){
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -161,7 +161,7 @@ router.get('/logout', function (req, res){
 
 const checkUserStatus = (req,res,next) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -177,7 +177,7 @@ const checkUserStatus = (req,res,next) => {
 
 router.get("/user",checkUserStatus,(req,res) => {
   const cors = {
-    origin: "https://vigilant-joliot-b731fa.netlify.app"
+    origin: "https://sticky-keeps.netlify.app"
   };
   res.header("Access-Control-Allow-Origin", cors.origin);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
