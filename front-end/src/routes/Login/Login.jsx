@@ -10,9 +10,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
-  // const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
+  const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
 
-  const SERVER_URL = "http://localhost:8080/api";
+  // const SERVER_URL = "http://localhost:8080/api";
 
   const fetchAuthUser = async () => {
     const response = await axios
