@@ -27,7 +27,7 @@ function Login() {
 
   useEffect(() => {
     fetchAuthUser();
-  }, []);
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClickLogin = async (e) => {
     e.preventDefault();
