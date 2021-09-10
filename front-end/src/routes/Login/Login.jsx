@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext , useEffect} from "react";
 import "./Login.scss";
 import google from "./search.png";
 import { AuthContext } from "../../Context/Authcontext";
@@ -10,9 +10,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
-  const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
+  // const SERVER_URL = "https://sticky-keeps.herokuapp.com/api";
 
-  // const SERVER_URL = "http://localhost:8080/api";
+  const SERVER_URL = "http://localhost:8080/api";
 
   const fetchAuthUser = async () => {
     const response = await axios
@@ -24,6 +24,10 @@ function Login() {
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
     }
   };
+
+  useEffect(() => {
+    fetchAuthUser();
+  }, []);
 
   const handleClickLogin = async (e) => {
     e.preventDefault();
@@ -60,15 +64,7 @@ function Login() {
     e.preventDefault();
 
     const LoginUrl = `${SERVER_URL}/auth/${e.target.alt}`;
-    const newWindow = window.open(LoginUrl, "_blank", "width=500, height=600");
-    if (newWindow) {
-      let timer = setInterval(() => {
-        if (newWindow.closed) {
-          fetchAuthUser();
-          clearInterval(timer);
-        }
-      }, 500);
-    }
+    window.location.href = LoginUrl;
   };
 
   return (

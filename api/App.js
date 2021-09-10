@@ -20,9 +20,15 @@ app.set("trust proxy",1);
 
 app.use(session({
     secret:"5AxC2JucvLhyQf", 
-    resave:false,
-    saveUninitialized:false,
+    resave:true,
+    saveUninitialized:true,
+    cookie:{
+        sameSite: "none",
+        secure: true,
+        maxAge: 1000*60*60*24*7
+    }
 }));
+
 app.use(bodyParser.urlencoded({
     extended:true
 }));

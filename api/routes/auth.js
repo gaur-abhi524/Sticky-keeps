@@ -32,7 +32,8 @@ let generateUniqueAccountName = async (proposedName) => {
     return proposedName;
 };
 
-const successLoginUrl = "https://sticky-keeps.netlify.app/login/success";
+// const successLoginUrl = "http://localhost:3000/";
+const successLoginUrl = "https://sticky-keeps.netlify.app/";
 const failureLoginUrl = "https://sticky-keeps.netlify.app/login/failure";
 
 //   Google Login strategy
